@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "invitaciones-15",
+  "private_key_id": "b5f1d613e10ffe2ca68986d2473450b8a9475be7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDgBddtnMLjsK+T\nxFxazUvUD73OXDy2FO0bdxXTMbFzRcRCMqewnKZ2XOT+13R15KJzqWXsmdAk+qT4\nE1errPccn2Nkw4/v8ZNM8DsD2omGSsd3kfrC2M9UiPfDMijcok3H58we2eEAsR6B\nYdTFMJLXmlQ97eJ/VbZ4L9xqcZ14OvMARdNQURkvNmGl1IjH3PTZryFHjR43qUqy\nUFI8XIqhX5dxr7npmx8e9O6BDJfY1Ip3kAMREBMYbImYXH+jOIceLn8/lXsJWTiR\nxU+3RfY0Nt18HhrvZnxMH6FGEUpkdrpgiwl2VJ8WRIanpcQHWSxrHjSYuuLAi3KQ\nhpOsD819AgMBAAECggEAM5l82alIJYhKpMNPj3Wmf+GhUzEhJcJzq8YV75eMWzQI\nZMQEpnQqjmxOrZlEYKxJM9Fioej6za2yxlY0NR2JrJzU2L6Hvpl613ek7DoPv7Al\nOhgUdYFZXgwPX3VD/q/esQsl07xVLGLflycIymOqCwGn4jzTFQfR1+SURStGvUyO\nOdINyY1dnuNgSMe0VDafwuQWe2SVq8vKQuFyTYTvIMO762XOXhSll5nID1KCv3th\nEvVLazfwqAzb7/BABd02/Md47C8tCX3iaFKKZU8czsfSNgGUF0AU5Ut7lALv7C3A\nqO3QFm2meT/FeImfBYJjTrlX/NIDhWF8jSil4mg0OQKBgQD8BbThmT33m4lreuRk\nVk+3LCqcSbN0dtHO/rWHAaCDknOjjLAW9PG/r378cRZiOKfPBQuiluRVzZlU3LmB\nwbc6v+8c7oUZJ4tuPDfqXPaUmltNeKjUKXOYr9V6f1ZxeHTlhjogZZacHyVp9xna\nDuorWfBOAzUWxrIPYcU5BaoEhQKBgQDjjwDc9sqPjkY1XfApZaBJSksRofpkkSHu\noTJH81iMRrKnV/1FQDSDl4uf+H1FAwfbs6rP7nCT+eRsfkajVcAmmte7Sg3UnGV2\n9dl2MhIOPJowqQyUHQJOe9ymRiNe8l0iAkJXpYTxKhIUYPTdEz44dRybghVZRpWM\nZiK8bibSmQKBgFymSGoLaRGHF4zwv9f3NxUS4pNUMOnm6JjdYKTCP10/UM3WYcH+\nyIT8ooVxmZYAWAiuRSm/qS+2BuGAx53hNlgdyWzsbvfhZsvezXuWM3xMBrbDXeWp\nW3rNYYDIIWJTsz3SC7pvPmAkvx9mnRViGEpZpRM48KJv53PqMJQW9fr1AoGAS9f2\nzq7GlpAx4Emd6P5BLQxA9vCItwoUSCebzZVStvY9Rz8xX+plVlKlK70za1P2Q4if\nbswm43sPYgW4X2oOMA+9xWOKNoml279XKmjH0czrCzrcwWTlxujLgvOviE65McOU\n/wdgxsxh2D70fdaTD1ghH8d8fBPldjT4cNs5v0kCgYBQ53JDzYHhAtBEKeHUSeqN\nacozlrihITVV0gI5ebO9WAfqoD9QMO0hRQC5Mw4OXgZYSZfWmN/YpLor6rII4Y0b\nA3FOjL1DVr6JOW4WoK9LrDyyNhhG1vss2VVaHfTR0GWe54hWAAQ1dtIUEQMBLcvt\nAaQEv1Kd1U8TeVfFcckJrQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "invitaciones-service@invitaciones-15.iam.gserviceaccount.com",
+  "client_id": "116536873389336879113",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/invitaciones-service%40invitaciones-15.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
