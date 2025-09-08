@@ -59,4 +59,20 @@ export const confirmarAsistencia = async (req, res) => {
   }
 };
 
+// controllers/invitacionesController.mjs
+export const confirmarInvitacion = (req, res) => {
+  const { nombre, cantidad } = req.body;
+
+  // Si falta algún dato
+  if (!nombre || !cantidad) {
+    return res.status(400).send("Faltan datos para confirmar la invitación.");
+  }
+
+  // Renderizamos la vista de confirmación
+  res.render("confirmacion", {
+    nombre,
+    cantidad,
+    fileName: "ejemplo.png" // en el futuro podés generar la invitación personalizada
+  });
+};
 
