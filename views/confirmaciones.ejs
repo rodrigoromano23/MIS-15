@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¡Asistencia Confirmada!</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f2, #fff);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #6f42c1;
+      margin-bottom: 30px;
+    }
+
+    .invitacion {
+      display: inline-block;
+      background: #fff0f5;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    .invitacion img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 15px;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 10px 5px;
+      background-color: #d63384;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #c61f7b;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 ¡Gracias por confirmar! 🎉</h1>
+  <h2><%= nombre %></h2>
+
+  <div class="invitacion">
+    <p>Has confirmado <strong><%= cantidad %></strong> persona(s) para la fiesta.</p>
+    <p>Tu invitación personalizada:</p>
+    <img src="/<%= fileName %>" alt="Invitación de <%= nombre %>">
+  </div>
+
+  <div>
+    <a href="/<%= fileName %>" download="invitacion.png" class="button">📥 Descargar Invitación</a>
+    <a href="/" class="button">⬅ Volver al inicio</a>
+  </div>
+</body>
+</html>
+

@@ -1,21 +1,14 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Confirmar Invitación</title>
   <link rel="stylesheet" href="styles/styles.css">
-  <style>
-   
-  </style>
 </head>
 <body>
-  <!-- Intro con video -->
   <div id="introVideo">
     <video autoplay muted playsinline id="videoIntro">
       <source src="/VI15S-new.mp4" type="video/mp4">
-      Tu navegador no soporta video.
     </video>
   </div>
 
@@ -24,79 +17,34 @@
       <div class="imagenes">
         <img src="/celi.png" alt="Imagen 1">
         <img src="/m.png" alt="Imagen 2">
-        
       </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <p></p>
+
       <p class="p"><em>
-        Quiero decirles <br> "Su presencia es el regalo más grande que podrías darme, porque compartir este momento juntos hará que sea aún más especial e inolvidable.  "</em></p>
-        <div style="display: flex; align-items: center; gap: 20px;">
-  <!-- Calendario -->
-  <img src="/11deoc.png" alt="Calendario" style="width: 200px; height: auto;">
+        Quiero decirles <br> "Su presencia es el regalo más grande que podrías darme, porque compartir este momento juntos hará que sea aún más especial e inolvidable."
+      </em></p>
 
-  <!-- Contador -->
-  <div id="countdown" style="
-      background-color: #000;
-      color: #fff;
-      padding: 20px 30px;
-      border-radius: 15px;
-      font-family: sans-serif;
-      font-size: 1.5rem;
-      text-align: center;
-      min-width: 220px;
-  ">
-    Cargando...
-  </div>
-</div>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <img src="/11deoc.png" alt="Calendario" style="width: 200px;">
+        <div id="countdown" style="background-color:#000;color:#fff;padding:20px 30px;border-radius:15px;font-size:1.5rem;text-align:center;min-width:220px;">Cargando...</div>
+      </div>
 
-<script>
-  // Fecha del evento
-  const eventoFecha = new Date("Dec 11, 2025 21:00:00").getTime();
-
-  // Actualizar cada segundo
-  const x = setInterval(function() {
-    const ahora = new Date().getTime();
-    const diferencia = eventoFecha - ahora;
-
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-    document.getElementById("countdown").innerHTML =
-      diferencia >= 0
-        ? `${dias}d ${horas}h ${minutos}m ${segundos}s`
-        : "¡El gran día ha llegado!";
-
-    if (diferencia < 0) clearInterval(x);
-  }, 1000);
-</script>
-      
       <div class="vest">
-          <p></p>
-          <img src="V.png" width="460px">
+        <img src="V.png" width="460px">
         <div class="vest-imgs">
           <img src="/mujere.png" alt="Vestimenta Mujer">
-          <img src="/HOMRPNG.png" alt="Vestimenta Hombre" >
+          <img src="/HOMRPNG.png" alt="Vestimenta Hombre">
         </div>
       </div>
-
-      
-      
     </header>
 
     <div class="lugar">
-      <img src="CEM.png" width="10px"  alt="Salón de Complejo Esmeralda">
-      <a href="https://www.google.com/maps/dir//K4707+San+Isidro,+Catamarca/@-28.464586,-65.8124555,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x94242f13fabc2cff:0x3c5e88f04116737b!2m2!1d-65.7300541!2d-28.4646108?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ver en Google Maps</a>
+      <img src="CEM.png" width="10px" alt="Salón de Complejo Esmeralda">
+      <a href="https://www.google.com/maps/dir//K4707+San+Isidro,+Catamarca" target="_blank">Ver en Google Maps</a>
     </div>
+
     <div>
       <p class="p">
-         Si deseas un regalo adiccional, puedes hacerlo a atravesdel siguiente medio(es opcional) te dejo mi alias: <p class="V">hluchii</p> 
+        Si deseas un regalo adicional (opcional) te dejo mi alias: <span class="V">hluchii</span>
       </p>
     </div>
 
@@ -105,13 +53,11 @@
       <form method="POST" action="/confirmar">
         <input type="text" name="nombre" placeholder="Nombre completo" required>
         <p><i>Cantidad de invitados</i></p>
-
         <div class="cantidad">
-          <% for (let i = 1; i <= 8; i++) { %>
-            <button type="button" onclick="seleccionarCantidad(<%= i %>)"><%= i %></button>
+          <% for (let i=1; i<=8; i++) { %>
+            <button type="button" onclick="seleccionarCantidad(<%= i %>, event)"><%= i %></button>
           <% } %>
         </div>
-
         <input type="hidden" name="cantidad" id="cantidad" required>
         <button type="submit" class="confirmar">Confirmar</button>
       </form>
@@ -119,22 +65,32 @@
   </div>
 
   <script>
-    // Ocultar intro al terminar el video
     const video = document.getElementById("videoIntro");
     video.addEventListener("ended", () => {
       document.getElementById("introVideo").style.display = "none";
     });
 
-    // Seleccionar cantidad
-    function seleccionarCantidad(num) {
+    const eventoFecha = new Date("Dec 11, 2025 21:00:00").getTime();
+    setInterval(() => {
+      const ahora = new Date().getTime();
+      const diferencia = eventoFecha - ahora;
+      const dias = Math.floor(diferencia / (1000*60*60*24));
+      const horas = Math.floor((diferencia % (1000*60*60*24))/(1000*60*60));
+      const minutos = Math.floor((diferencia % (1000*60*60))/(1000*60));
+      const segundos = Math.floor((diferencia % (1000*60))/1000);
+      document.getElementById("countdown").innerHTML = diferencia>=0 ? `${dias}d ${horas}h ${minutos}m ${segundos}s` : "¡El gran día ha llegado!";
+    },1000);
+
+    function seleccionarCantidad(num, event){
       document.getElementById("cantidad").value = num;
-      document.querySelectorAll(".cantidad button").forEach(btn => {
-        btn.classList.remove("active");
-      });
+      document.querySelectorAll(".cantidad button").forEach(btn=>btn.classList.remove("active"));
       event.target.classList.add("active");
     }
   </script>
 </body>
 </html>
+
+
+
 
 
