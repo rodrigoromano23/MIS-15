@@ -4,46 +4,37 @@ import { google } from "googleapis";
 import { createCanvas, loadImage } from "canvas";
 import { writeFileSync } from "fs";
 
-
-
+// Google Sheets usando variable de entorno
 const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-
 const auth = new google.auth.GoogleAuth({
   credentials: serviceAccount,
-  scopes: ['https://www.googleapis.com/auth/spreadsheets']
+  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
+const sheets = google.sheets({ version: "v4", auth });
 
-const sheets = google.sheets({ version: 'v4', auth });
-
+// ID de tu Google Spreadsheet
+const spreadsheetId = "17GRE_9YBjctp9M1lmxqIehXK9FwZ_RY0hpyrwOKCEBQ";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
-
-const auth = new google.auth.GoogleAuth({
-  keyFile: "invitaciones-15-b5f1d613e10f.json",
-  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-});
-
-const spreadsheetId = "17GRE_9YBjctp9M1lmxqIehXK9FwZ_RY0hpyrwOKCEBQ";
 
 // Vista principal
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-// Confirmación
+// Confirmación de asistencia
 app.post("/confirmar", async (req, res) => {
   try {
     const { nombre, cantidad } = req.body;
 
     // Guardar en Google Sheet
     const client = await auth.getClient();
-    const sheets = google.sheets({ version: "v4", auth: client });
-    await sheets.spreadsheets.values.append({
+    const sheetsClient = google.sheets({ version: "v4", auth: client });
+    await sheetsClient.spreadsheets.values.append({
       spreadsheetId,
       range: "A:B",
       valueInputOption: "USER_ENTERED",
@@ -58,7 +49,7 @@ app.post("/confirmar", async (req, res) => {
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
 
-    // Cargar fondo (imagen que pongas en /public)
+    // Cargar fondo desde /public
     const fondo = await loadImage("./public/x.jpg");
     ctx.drawImage(fondo, 0, 0, width, height);
 
@@ -95,4 +86,7 @@ app.post("/confirmar", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Servidor en http://localhost:3000"));
+// Arrancar servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+
