@@ -4,7 +4,7 @@ import { google } from "googleapis";
 import { createCanvas, loadImage } from "canvas";
 import { writeFileSync } from "fs";
 
-import { google } from 'googleapis';
+
 
 const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
