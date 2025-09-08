@@ -4,6 +4,7 @@ import { google } from "googleapis";
 import { createCanvas, loadImage } from "canvas";
 import { writeFileSync } from "fs";
 
+// 🔑 Cargar credenciales desde variables de entorno
 const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 
 const auth = new google.auth.GoogleAuth({
@@ -11,14 +12,14 @@ const auth = new google.auth.GoogleAuth({
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-const sheets = google.sheets({ version: "v4", auth });
-const spreadsheetId = "TU_ID_DE_SPREADSHEET";
-
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
+
+// 👉 Variable de entorno para el Spreadsheet ID
+const spreadsheetId = process.env.SPREADSHEET_ID;
 
 // Rutas
 app.get("/", (req, res) => {
@@ -31,9 +32,11 @@ app.post("/confirmar", async (req, res) => {
     const client = await auth.getClient();
     const sheetsApi = google.sheets({ version: "v4", auth: client });
 
+    console.log("✍ Escribiendo en Sheets:", { nombre, cantidad });
+
     await sheetsApi.spreadsheets.values.append({
       spreadsheetId,
-      range: "A:B",
+      range: "Hoja1!A:B", // ⚠️ Cambiar "Hoja1" al nombre real de tu pestaña
       valueInputOption: "USER_ENTERED",
       requestBody: { values: [[nombre, cantidad]] },
     });
@@ -71,9 +74,12 @@ app.post("/confirmar", async (req, res) => {
       <a href="/">⬅ Volver al inicio</a>
     `);
   } catch (err) {
-    console.error("Error:", err);
+    console.error("❌ Error al confirmar asistencia:", err.message, err);
     res.status(500).send("Hubo un error al confirmar tu asistencia.");
   }
 });
 
-app.listen(3000, () => console.log("Servidor en http://localhost:3000"));
+// Render obliga a usar process.env.PORT
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Servidor en http://localhost:${PORT}`));
+
