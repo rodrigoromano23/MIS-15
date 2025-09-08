@@ -4,6 +4,18 @@ import { google } from "googleapis";
 import { createCanvas, loadImage } from "canvas";
 import { writeFileSync } from "fs";
 
+import { google } from 'googleapis';
+
+const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
+const auth = new google.auth.GoogleAuth({
+  credentials: serviceAccount,
+  scopes: ['https://www.googleapis.com/auth/spreadsheets']
+});
+
+const sheets = google.sheets({ version: 'v4', auth });
+
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
