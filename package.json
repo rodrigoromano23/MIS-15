@@ -2,14 +2,14 @@
   "name": "invitaciones",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.mjs",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "body-parser": "^2.2.0",
     "canvas": "^3.2.0",
@@ -17,3 +17,4 @@
     "googleapis": "^159.0.0"
   }
 }
+
