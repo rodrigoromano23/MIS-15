@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import invitacionesRoutes from "routes/invitacionesRoutes.mjs";
+import invitacionesRoutes from "./invitaciones/routes/invitacionesRoutes.mjs";
 
 const app = express();
 
