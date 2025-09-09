@@ -1,15 +1,16 @@
-import express from 'express';
-import { confirmarInvitacion } from './controllers/invitacionesController.mjs'; // ✅ sin "src/"
+import express from "express";
+import { mostrarFormulario, confirmarAsistencia } from "../controllers/invitacionesController.mjs";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('formulario'); // Asegúrate que tengas views/formulario.ejs
-});
+// Ruta del formulario
+router.get("/", mostrarFormulario);
 
-router.post('/confirmar', confirmarInvitacion);
+// Confirmar asistencia
+router.post("/confirmar", confirmarAsistencia);
 
 export default router;
+
 
 
 
