@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 // Para usar __dirname en ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+const fondo = await loadImage(path.join(__dirname, "public", "x.jpg"));
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

@@ -22,6 +22,9 @@ export const confirmarAsistencia = async (req, res) => {
       return res.status(400).send("Debes ingresar un nombre y seleccionar cantidad");
     }
 
+    console.log("Spreadsheet ID:", spreadsheetId);
+    console.log("Nombre:", nombre, "Cantidad:", cantidad);
+
     const client = await auth.getClient();
     const sheetsApi = google.sheets({ version: "v4", auth: client });
 
