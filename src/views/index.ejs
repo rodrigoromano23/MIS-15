@@ -50,7 +50,7 @@
 
     <div class="card">
       <h2>Confirmar asistencia</h2>
-      <form method="POST" action="/confirmar">
+      <form method="POST" action="/confirmar" onsubmit="return validarFormulario()">
         <input type="text" name="nombre" placeholder="Nombre completo" required>
         <p><i>Cantidad de invitados</i></p>
         <div class="cantidad">
@@ -58,7 +58,8 @@
             <button type="button" onclick="seleccionarCantidad(<%= i %>, event)"><%= i %></button>
           <% } %>
         </div>
-        <input type="hidden" name="cantidad" id="cantidad" required>
+        <!-- valor por defecto 1 -->
+        <input type="hidden" name="cantidad" id="cantidad" value="1" required>
         <button type="submit" class="confirmar">Confirmar</button>
       </form>
     </div>
@@ -85,6 +86,15 @@
       document.getElementById("cantidad").value = num;
       document.querySelectorAll(".cantidad button").forEach(btn=>btn.classList.remove("active"));
       event.target.classList.add("active");
+    }
+
+    function validarFormulario(){
+      const cantidad = document.getElementById("cantidad").value;
+      if (!cantidad) {
+        alert("Por favor seleccioná la cantidad de invitados.");
+        return false;
+      }
+      return true;
     }
   </script>
 </body>
