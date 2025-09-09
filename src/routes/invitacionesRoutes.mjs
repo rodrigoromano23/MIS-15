@@ -1,5 +1,5 @@
 import express from "express";
-import { mostrarFormulario, confirmarAsistencia } from "./controllers/invitacionesController.mjs"
+import { mostrarFormulario, confirmarAsistencia } from "../controllers/invitacion.mjs"
 
 const router = express.Router();
 
