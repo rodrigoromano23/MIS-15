@@ -1,19 +1,25 @@
-import express from "express";
-import bodyParser from "body-parser";
-import invitacionesRoutes from "./routes/invitacionesRoutes.mjs";
+import express from 'express';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import invitacionesRoutes from './routes/invitacionesRoutes.mjs'; // ✅ ojo, sin "src/"
+
+dotenv.config();
 
 const app = express();
 
+// Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
-app.set("view engine", "ejs");
-app.set("views", "./views");
+app.use(bodyParser.json());
+app.set('view engine', 'ejs');
 
-app.use("/", invitacionesRoutes);
+// Rutas
+app.use('/', invitacionesRoutes);
 
-// Puerto dinámico para Render
+// Servidor
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en puerto ${PORT}`);
+});
 
 
 
