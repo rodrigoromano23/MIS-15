@@ -1,7 +1,13 @@
 import { google } from "googleapis";
 import { createCanvas, loadImage } from "canvas";
 import { writeFileSync } from "fs";
+//agregado si no funciona borrar-------------------------------------
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+//-------------------------------------------------------------------
 const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
 const auth = new google.auth.GoogleAuth({
   credentials: serviceAccount,
@@ -55,7 +61,7 @@ export const confirmarAsistencia = async (req, res) => {
     const fileName = `invitacion-${Date.now()}.png`;
     writeFileSync(`./public/${fileName}`, canvas.toBuffer("image/png"));
 
-    res.render("confirmacion", { nombre, cantidad, fileName });
+    res.render("confirmaciones", { nombre, cantidad, fileName });
   } catch (err) {
     console.error("❌ Error al confirmar asistencia:", err);
     res.status(500).send("Hubo un error al confirmar tu asistencia.");
