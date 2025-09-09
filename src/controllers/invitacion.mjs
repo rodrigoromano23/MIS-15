@@ -39,7 +39,7 @@ export const confirmarAsistencia = async (req, res) => {
     const width = 800, height = 600;
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext("2d");
-    const fondo = await loadImage("./public/x.jpg");
+    const fondo = await loadImage(path.join(__dirname, "public", "x.jpg"));
     ctx.drawImage(fondo, 0, 0, width, height);
 
     ctx.fillStyle = "#fff";
