@@ -21,8 +21,11 @@ export const mostrarFormulario = (req, res) => {
 };
 
 export const confirmarAsistencia = async (req, res) => {
+  console.log("🟢 Entró a confirmarAsistencia");
   try {
+    console.log("Body recibido:", req.body);
     const { nombre, cantidad } = req.body;
+    console.log("❌ Faltan datos:", { nombre, cantidad });
 
     if (!nombre || !cantidad) {
       return res.status(400).send("Debes ingresar un nombre y seleccionar cantidad");
