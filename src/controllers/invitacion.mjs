@@ -63,8 +63,9 @@ export const confirmarAsistencia = async (req, res) => {
 
     res.render("confirmaciones", { nombre, cantidad, fileName });
   } catch (err) {
-    console.error("❌ Error al confirmar asistencia:", err);
-    res.status(500).send("Hubo un error al confirmar tu asistencia.");
+    console.error("❌ Error al confirmar asistencia:", err.message); // mensaje claro
+    console.error(err.stack); // stacktrace completo
+    res.status(500).send("Hubo un error al confirmar tu asistencia: " + err.message);
   }
 };
 
